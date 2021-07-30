@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 sp1 (http://www.altova.com) by John Pietras (GST, Inc.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:ccsds:schema:tgft:xfdu_extensions" targetNamespace="urn:ccsds:schema:tgft:xfdu_extensions" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="TgftXfduExtensionType">
+		<xs:annotation>
+			<xs:documentation>TGFT extension parameters of the XFDU packageHeader:environmentInfo:extension element</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="originator" type="xs:string" minOccurs="0"/>
+			<xs:element name="recipient" type="xs:string" minOccurs="0"/>
+			<xs:element name="sensitivity" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TgftContentUnitExtensionType">
+		<xs:annotation>
+			<xs:documentation>TGFT extension parameters of the XFDU informationPackageMap:contentUnit:extension element</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="creationDate" type="xs:string" minOccurs="0"/>
+			<xs:element name="serviceSpecificContentUnitExt" type="ServiceSpecificExtensionType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="tgftContentUnitExtension" type="TgftContentUnitExtensionType"/>
+	<xs:complexType name="ServiceSpecificExtensionType">
+		<xs:annotation>
+			<xs:documentation>
+            allows third parties to define extensions to the XFDU from a namespace
+            controlled by the third party 
+         </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:any namespace="##other" processContents="lax"/>
+		</xs:sequence>
+		<xs:anyAttribute namespace="##other" processContents="lax"/>
+	</xs:complexType>
+</xs:schema>
